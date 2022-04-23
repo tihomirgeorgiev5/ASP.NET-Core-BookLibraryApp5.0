@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using static BookLibraryApp5._0.Data.DataConstants.Book;
 
 namespace BookLibraryApp5._0.Data.Models
 {
