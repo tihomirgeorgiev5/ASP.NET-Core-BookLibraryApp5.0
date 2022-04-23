@@ -1,4 +1,5 @@
 using BookLibraryApp5._0.Data;
+using BookLibraryApp5._0.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -41,6 +42,8 @@ namespace BookLibraryApp5._0
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.PrepareDatabase();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
