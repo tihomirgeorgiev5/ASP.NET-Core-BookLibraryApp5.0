@@ -19,7 +19,7 @@ namespace BookLibraryApp5._0
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .AddDbContext<ApplicationDbContext>(options => options
+                .AddDbContext<BookLibraryDbContext>(options => options
                 .UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services
@@ -33,7 +33,7 @@ namespace BookLibraryApp5._0
                     options.Password.RequireNonAlphanumeric = false;
                     options.Password.RequireUppercase = false;
                 })
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<BookLibraryDbContext>();
 
             services
                 .AddControllersWithViews();
