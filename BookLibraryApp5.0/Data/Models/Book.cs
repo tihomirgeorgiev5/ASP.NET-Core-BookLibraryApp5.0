@@ -31,5 +31,9 @@ namespace BookLibraryApp5._0.Data.Models
         public int Pages { get; set; }
 
         public int Year { get; set; }
+
+        public int CategoryId { get; set; }
+
+        public Category Category { get; init; }
     }
 }
