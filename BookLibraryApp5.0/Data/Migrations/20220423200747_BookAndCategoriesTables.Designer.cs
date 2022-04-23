@@ -4,14 +4,16 @@ using BookLibraryApp5._0.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BookLibraryApp5._0.Data.Migrations
 {
     [DbContext(typeof(BookLibraryDbContext))]
-    partial class BookLibraryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220423200747_BookAndCategoriesTables")]
+    partial class BookAndCategoriesTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
