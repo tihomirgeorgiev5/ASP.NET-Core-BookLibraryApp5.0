@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace BookLibraryApp5._0.Models.Books
 {
@@ -12,6 +10,8 @@ namespace BookLibraryApp5._0.Models.Books
         public string Author { get; init; }
 
         public string Publisher { get; init; }
+
+        [Display(Name = "Image URL")]
        
         public string ImageUrl { get; init; }
     
@@ -19,6 +19,10 @@ namespace BookLibraryApp5._0.Models.Books
 
         public int Year { get; init; }
 
+        [Display(Name = "Category")]
+
         public int CategoryId { get; init; }
+
+        public IEnumerable<BookCategoryViewModel> Categories { get; set; }
     }
 }
