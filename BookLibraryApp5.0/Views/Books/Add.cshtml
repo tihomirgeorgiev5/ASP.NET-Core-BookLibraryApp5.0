@@ -11,32 +11,26 @@
             <div class="form-group">
                 <label asp-for="Title"></label>
                 <input asp-for="Title" class="form-control" placeholder="Da Vinci Code, Harry Potter and the Deathly Hallows, etc...">
-                <span asp-validation-for="Title" class="small text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Author"></label>
                 <input asp-for="Author" class="form-control" placeholder="Dan Brown, Stephen King, etc...">
-                <span asp-validation-for="Author" class="small text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ImageUrl"></label>
                 <input asp-for="ImageUrl" class="form-control" placeholder="Your fine URL here...">
-                <span asp-validation-for="ImageUrl" class="small text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Publisher"></label>
                 <input asp-for="Publisher" class="form-control" placeholder="Book Publisher here..">
-                <span asp-validation-for="Publisher" class="small text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Description"></label>
                 <textarea asp-for="Description" rows="4" class="form-control" placeholder="This is the best book..."></textarea>
-                <span asp-validation-for="Description" class="small text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Year"></label>
                 <input asp-for="Year" class="form-control" placeholder="@DateTime.UtcNow.Year">
-                <span asp-validation-for="Year" class="small text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CategoryId"></label>
