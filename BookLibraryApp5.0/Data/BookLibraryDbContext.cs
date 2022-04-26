@@ -17,6 +17,14 @@ namespace BookLibraryApp5._0.Data
 
         public DbSet<Category> Categories { get; init; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(@"Server=DESKTOP-SB9MJ7T\SQLEXPRESS;Database=BookLibraryApp5._0;Integrated Security=true;");
+            }
+        }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder
