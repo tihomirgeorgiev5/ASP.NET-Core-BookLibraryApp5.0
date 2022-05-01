@@ -35,15 +35,11 @@
             <div class="form-group">
                 <label asp-for="CategoryId"></label>
                 <select asp-for="CategoryId" class="form-control">
-                    <option value="">All</option>
-                    <option value="1">Literary Fiction</option>
-                    <option value="2">Horror</option>
-                    <option value="3">Historical Fiction</option>
-                    <option value="4">Fantasy</option>
-                    <option value="5">Detective and Mystery</option>
-                    <option value="6">Comic Book or Graphic Novel</option>
-                    <option value="7">Classics</option>
-                    <option value="8">Action and Adventure</option>
+                    @foreach (var category in Model.Categories)
+                    {
+                        <option value="@category.Id">@category.Name</option>
+
+                    }
                 </select>
             </div>
             <input class="btn btn-primary" type="submit" value="Save" />

@@ -1,4 +1,5 @@
 ﻿using BookLibraryApp5._0.Data;
+using BookLibraryApp5._0.Data.Models;
 using BookLibraryApp5._0.Models.Books;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -22,6 +23,22 @@ namespace BookLibraryApp5._0.Controllers
         [HttpPost]
         public IActionResult Add(AddBookFormModel book)
         {
+
+            var bookModel = new Book()
+            {
+                Title = book.Title,
+                Author = book.Author,
+                CategoryId = book.CategoryId,
+                Description = book.Description,
+                ImageUrl = book.ImageUrl,
+                Publisher = book.Publisher,
+                Year = book.Year
+
+            };
+
+            this.data.Books.Add(bookModel);
+            this.data.SaveChanges();
+
             return View();
         }
 
