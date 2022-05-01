@@ -42,6 +42,8 @@ namespace BookLibraryApp5._0.Infrastructure
                 new Category { Name = "Horror"},
                 new Category { Name = "Literary"},
             });
+
+            data.SaveChanges();
         }
     }
 }
