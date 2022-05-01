@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookLibraryApp5._0.Data.Migrations
 {
     [DbContext(typeof(BookLibraryDbContext))]
-    [Migration("20220423200747_BookAndCategoriesTables")]
-    partial class BookAndCategoriesTables
+    [Migration("20220501200527_BookCategoriesTables")]
+    partial class BookCategoriesTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,14 +23,15 @@ namespace BookLibraryApp5._0.Data.Migrations
 
             modelBuilder.Entity("BookLibraryApp5._0.Data.Models.Book", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Author")
                         .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
@@ -48,8 +49,8 @@ namespace BookLibraryApp5._0.Data.Migrations
 
                     b.Property<string>("Publisher")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("Title")
                         .IsRequired()

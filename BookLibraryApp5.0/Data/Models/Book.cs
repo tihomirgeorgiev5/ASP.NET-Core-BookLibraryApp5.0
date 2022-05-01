@@ -5,10 +5,8 @@ namespace BookLibraryApp5._0.Data.Models
 {
     public class Book
     {
-        [Key]
-        [Required]
-        [MaxLength(IdMaxLength)]
-        public string Id { get; init; }
+        
+        public int Id { get; init; }
 
         [Required]
         [MaxLength(BookTitleMaxLength)]

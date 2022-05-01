@@ -23,9 +23,20 @@ namespace BookLibraryApp5._0.Controllers
         [HttpPost]
         public IActionResult Add(AddBookFormModel book)
         {
+            if (!this.data.Categories.Any(c => c.Id == book.CategoryId))
+            {
+                this.ModelState.AddModelError(nameof(book.CategoryId), "Category doe not exist.");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                book.Categories = this.GetBookCategories();
+                return View(book);
+            }
 
             var bookModel = new Book()
             {
+
                 Title = book.Title,
                 Author = book.Author,
                 CategoryId = book.CategoryId,
@@ -39,16 +50,20 @@ namespace BookLibraryApp5._0.Controllers
             this.data.Books.Add(bookModel);
             this.data.SaveChanges();
 
-            return View();
+            return RedirectToAction("Index", "Home");
+           
+           
+
+           
         }
 
         private IEnumerable<BookCategoryViewModel> GetBookCategories()
             => this.data
             .Categories
-            .Select(c => new BookCategoryViewModel
+            .Select(b => new BookCategoryViewModel
             {
-                Id = c.Id,
-                Name = c.Name
+                Id = b.Id,
+                Name = b.Name
             })
             .ToList();
             
