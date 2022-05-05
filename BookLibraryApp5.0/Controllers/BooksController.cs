@@ -22,6 +22,22 @@ namespace BookLibraryApp5._0.Controllers
 
         public IActionResult All()
         {
+            var books = this.data
+                .Books
+                .OrderByDescending(b => b.Id)
+                .Select(b => new BookListingViewModel
+                {
+                    Id = b.Id,
+                    Title = b.Title,
+                    Author = b.Author,
+                    Publisher = b.Publisher,
+                    Year = b.Year,
+                    ImageUrl = b.ImageUrl,
+                    Category = b.Category.Name
+                })
+                .ToList();
+
+            return View(books);
 
         }
 
