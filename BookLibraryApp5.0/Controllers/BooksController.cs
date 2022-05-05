@@ -20,6 +20,11 @@ namespace BookLibraryApp5._0.Controllers
             Categories = this.GetBookCategories()
         });
 
+        public IActionResult All()
+        {
+
+        }
+
         [HttpPost]
         public IActionResult Add(AddBookFormModel book)
         {
