@@ -1,0 +1,16 @@
+﻿@model IEnumerable<BookListingViewModel>
+
+<div class="row">
+    @foreach (var book in Model)
+    {
+        <div class="card">
+            <img class="card-img-top" src="@book.ImageUrl" alt="@book.Title @book.Author - @book.Year (@book.Category)">
+            <div class="card-body">
+                <h5 class="card-title">@book.Title @book.Author (@book.Year)</h5>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    }
+</div>
+
+
