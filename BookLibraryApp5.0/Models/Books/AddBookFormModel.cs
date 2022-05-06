@@ -24,7 +24,7 @@ namespace BookLibraryApp5._0.Models.Books
         public string ImageUrl { get; init; }
 
         [Required]
-       [StringLength(BookPublisherMaxLength, MinimumLength = BookPublisherMinLength)]
+       [StringLength(BookDescriptionMaxLength, MinimumLength = BookDescriptionMinLength)]
         public string Description { get; init; }
 
         [Range(BookYearMinValue, BookYearMaxValue)]
