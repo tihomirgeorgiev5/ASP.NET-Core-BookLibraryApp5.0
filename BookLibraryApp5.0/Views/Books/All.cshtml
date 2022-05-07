@@ -4,7 +4,7 @@
     @foreach (var book in Model)
     {
     <div class="col-md-4">
-        <div class="card">
+        <div class="card mb-3">
             <img class="card-img-top" src="@book.ImageUrl" alt="@book.Title @book.Author - @book.Year (@book.Category)">
             <div class="card-body text-center">
                 <h5 class="card-title text-center">@book.Year @book.Title @book.Author</h5>
