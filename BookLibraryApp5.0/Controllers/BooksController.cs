@@ -20,9 +20,15 @@ namespace BookLibraryApp5._0.Controllers
             Categories = this.GetBookCategories()
         });
 
-        public IActionResult All(string searchTerm)
+        public IActionResult All(string title, string searchTerm)
         {
             var booksQuery = this.data.Books.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(title))
+            {
+                booksQuery = booksQuery
+                    .Where(b => b.Title == title);
+            }
 
             if (!string.IsNullOrWhiteSpace(searchTerm))
             {
@@ -45,8 +51,15 @@ namespace BookLibraryApp5._0.Controllers
                 })
                 .ToList();
 
+            var bookTitles = this.data
+                .Books
+                .Select(b => b.Title)
+                .Distinct()
+                .ToList();
+
             return View(new AllBooksQueryModel
             {
+                Titles = bookTitles,
                 Books = books,
                 SearchTerm = searchTerm
             });

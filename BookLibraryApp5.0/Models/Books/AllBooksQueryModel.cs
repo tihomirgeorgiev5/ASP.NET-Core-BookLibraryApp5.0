@@ -5,7 +5,8 @@ namespace BookLibraryApp5._0.Models.Books
 {
     public class AllBooksQueryModel
     {
-        public IEnumerable<string> Title { get; init; }
+        public string Title { get; init; }
+        public IEnumerable<string> Titles { get; init; }
 
         [Display(Name = "Search by text:")]
         public string SearchTerm { get; init; }

@@ -3,15 +3,23 @@
 <form method="get">
     <div class="row mb-5">
         <div class="form-group col-md-4">
+            <div class="form-group">
+                <label asp-for="Title"></label>
+                <select asp-for="Title" class="form-control">
+                    @foreach (var title in Model.Titles)
+                    {
+                        <option value="@title">@title</option>
+                    }
+                </select>
+            </div>   
+        </div>
+
+        <div class="form-group col-md-4">
             <label asp-for="SearchTerm"></label>
             <input asp-for="SearchTerm" class="form-control" placeholder="Da Vinci Code, Harry Potter and the Deathly Hallows, etc...">
         </div>
-        <div class="form-group col-md-3">
 
-        </div>
-
-        <div class="form-group col-md-3">
-                
+        <div class="form-group col-md-3">          
         </div>
     </div>
 </form>
