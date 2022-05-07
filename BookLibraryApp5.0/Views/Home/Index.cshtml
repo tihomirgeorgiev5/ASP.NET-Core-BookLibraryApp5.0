@@ -1,16 +1,17 @@
-﻿@model List<BookListingViewModel>
+﻿@model IndexViewModel
 
 @{
     ViewData["Title"] = "Welcome!";
 }
 
 @{
-    var firstBook = Model.Any() ? Model[0] : null;
-    var secondBook = Model.Count > 1 ? Model[1] : null;
-    var thirdBook = Model.Count > 2 ? Model[2] : null;
+    var books = Model.Books;
+    var firstBook = books.Any() ? books[0] : null;
+    var secondBook = books.Count > 1 ? books[1] : null;
+    var thirdBook = books.Count > 2 ? books[2] : null;
 }
 
-@if (!Model.Any())
+@if (!books .Any())
 {
     <div class="jumbotron">
         <h1 class="display-4">Welcome to the best place for renting books!</h1>

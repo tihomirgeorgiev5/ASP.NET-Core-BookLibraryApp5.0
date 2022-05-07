@@ -1,6 +1,6 @@
 ﻿using BookLibraryApp5._0.Data;
 using BookLibraryApp5._0.Models;
-using BookLibraryApp5._0.Models.Books;
+using BookLibraryApp5._0.Models.Home;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Linq;
@@ -16,10 +16,11 @@ namespace BookLibraryApp5._0.Controllers
 
         public IActionResult Index()
         {
+            var totalBooks = this.data.Books.Count();
             var books = this.data
                .Books
                .OrderByDescending(b => b.Id)
-               .Select(b => new BookListingViewModel
+               .Select(b => new BookIndexViewModel
                {
                    Id = b.Id,
                    Title = b.Title,
@@ -27,12 +28,16 @@ namespace BookLibraryApp5._0.Controllers
                    Publisher = b.Publisher,
                    Year = b.Year,
                    ImageUrl = b.ImageUrl,
-                   Category = b.Category.Name
+                  
                })
                .Take(3)
                .ToList();
 
-            return View(books);
+            return View(new IndexViewModel
+            { 
+                 TotalBooks = totalBooks,
+                 Books = books
+            });
         }
           
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
