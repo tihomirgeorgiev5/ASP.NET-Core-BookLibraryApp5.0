@@ -71,7 +71,7 @@ namespace BookLibraryApp5._0.Controllers
             this.data.Books.Add(bookModel);
             this.data.SaveChanges();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction(nameof(All));
            
            
 
