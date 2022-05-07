@@ -1,7 +1,14 @@
-﻿@model IEnumerable<BookListingViewModel>
+﻿@model AllBooksQueryModel
 
 <div class="row">
-    @foreach (var book in Model)
+    <form method="get">
+
+    </form>
+
+</div>
+
+<div class="row">
+    @foreach (var book in Model.Books)
     {
     <div class="col-md-4">
         <div class="card mb-3">
