@@ -20,10 +20,18 @@ namespace BookLibraryApp5._0.Controllers
             Categories = this.GetBookCategories()
         });
 
-        public IActionResult All()
+        public IActionResult All(string searchTerm)
         {
-            var books = this.data
-                .Books
+            var booksQuery = this.data.Books.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                booksQuery = booksQuery.Where(b =>
+                    (b.Title + " " + b.Author).ToLower().Contains(searchTerm.ToLower()) ||
+                    b.Description.ToLower().Contains(searchTerm.ToLower()));
+            }
+
+            var books = booksQuery
                 .OrderByDescending(b => b.Id)
                 .Select(b => new BookListingViewModel
                 {
@@ -37,7 +45,11 @@ namespace BookLibraryApp5._0.Controllers
                 })
                 .ToList();
 
-            return View(books);
+            return View(new AllBooksQueryModel
+            {
+                Books = books,
+                SearchTerm = searchTerm
+            });
 
         }
 
