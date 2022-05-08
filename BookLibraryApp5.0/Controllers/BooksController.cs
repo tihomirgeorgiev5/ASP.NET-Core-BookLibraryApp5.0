@@ -41,6 +41,8 @@ namespace BookLibraryApp5._0.Controllers
             };
 
             var books = booksQuery
+                .Skip((query.CurrentPage - 1) * AllBooksQueryModel.BooksPerPage)
+                .Take(AllBooksQueryModel.BooksPerPage)
                 .OrderByDescending(b => b.Id)
                 .Select(b => new BookListingViewModel
                 {
