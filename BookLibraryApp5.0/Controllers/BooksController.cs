@@ -20,27 +20,24 @@ namespace BookLibraryApp5._0.Controllers
             Categories = this.GetBookCategories()
         });
 
-        public IActionResult All(
-            string title,
-            string searchTerm,
-            BookSorting sorting)
+        public IActionResult All([FromQuery]AllBooksQueryModel query)
         {
             var booksQuery = this.data.Books.AsQueryable();
 
-            if (!string.IsNullOrWhiteSpace(title))
+            if (!string.IsNullOrWhiteSpace(query.Title))
             {
                 booksQuery = booksQuery
-                    .Where(b => b.Title == title);
+                    .Where(b => b.Title == query.Title);
             }
 
-            if (!string.IsNullOrWhiteSpace(searchTerm))
+            if (!string.IsNullOrWhiteSpace(query.SearchTerm))
             {
                 booksQuery = booksQuery.Where(b =>
-                    (b.Title + " " + b.Author).ToLower().Contains(searchTerm.ToLower()) ||
-                    b.Description.ToLower().Contains(searchTerm.ToLower()));
+                    (b.Title + " " + b.Author).ToLower().Contains(query.SearchTerm.ToLower()) ||
+                    b.Description.ToLower().Contains(query.SearchTerm.ToLower()));
             }
 
-            booksQuery = sorting switch
+            booksQuery = query.Sorting switch
             {  
                 BookSorting.Year => booksQuery.OrderByDescending(b => b.Year),
                 BookSorting.TitelAndAuthor => booksQuery.OrderBy(b => b.Title).ThenBy(b => b.Author),
@@ -68,14 +65,11 @@ namespace BookLibraryApp5._0.Controllers
                 .OrderBy(t => t)
                 .ToList();
 
-            return View(new AllBooksQueryModel
-            {
-                Title = title,
-                Titles = bookTitles,
-                SearchTerm = searchTerm,
-                Sorting = sorting,
-                Books = books,
-            });
+            query.Titles = bookTitles;
+            query.Books = books;
+
+
+            return View(query);
 
         }
 
