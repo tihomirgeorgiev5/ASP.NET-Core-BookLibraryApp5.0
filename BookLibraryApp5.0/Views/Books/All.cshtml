@@ -6,6 +6,7 @@
             <div class="form-group">
                 <label asp-for="Title"></label>
                 <select asp-for="Title" class="form-control">
+                    <option value="">All</option>
                     @foreach (var title in Model.Titles)
                     {
                         <option value="@title">@title</option>
@@ -18,8 +19,15 @@
             <label asp-for="SearchTerm"></label>
             <input asp-for="SearchTerm" class="form-control" placeholder="Da Vinci Code, Harry Potter and the Deathly Hallows, etc...">
         </div>
-
-        <div class="form-group col-md-3">          
+        <div class="form-group col-md-3">
+            <div class="form-group">
+                <label asp-for="Sorting"></label>
+                <select asp-for="Sorting" class="form-control">
+                    <option value="0" selected>DateCreated</option>
+                    <option value="1">Year</option>
+                    <option value="2">Titel And Author</option>
+                </select>
+            </div>
         </div>
     </div>
 </form>
