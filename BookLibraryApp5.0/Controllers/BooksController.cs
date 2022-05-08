@@ -40,10 +40,11 @@ namespace BookLibraryApp5._0.Controllers
                 BookSorting.DateCreated or _=> booksQuery.OrderByDescending(b => b.Id)
             };
 
+            var totalBooks = booksQuery.Count();
+
             var books = booksQuery
                 .Skip((query.CurrentPage - 1) * AllBooksQueryModel.BooksPerPage)
                 .Take(AllBooksQueryModel.BooksPerPage)
-                .OrderByDescending(b => b.Id)
                 .Select(b => new BookListingViewModel
                 {
                     Id = b.Id,
@@ -63,6 +64,7 @@ namespace BookLibraryApp5._0.Controllers
                 .OrderBy(t => t)
                 .ToList();
 
+            query.TotalBooks = totalBooks;
             query.Titles = bookTitles;
             query.Books = books;
 
