@@ -15,11 +15,7 @@ namespace BookLibraryApp5._0.Controllers
         {
             this.data = data;
         }
-        public IActionResult Add() => View(new AddBookFormModel
-        {
-            Categories = this.GetBookCategories()
-        });
-
+       
         public IActionResult All([FromQuery]AllBooksQueryModel query)
         {
             var booksQuery = this.data.Books.AsQueryable();
@@ -72,6 +68,10 @@ namespace BookLibraryApp5._0.Controllers
             return View(query);
 
         }
+        public IActionResult Add() => View(new AddBookFormModel
+        {
+            Categories = this.GetBookCategories()
+        });
 
         [HttpPost]
         public IActionResult Add(AddBookFormModel book)
